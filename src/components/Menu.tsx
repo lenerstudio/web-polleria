@@ -17,7 +17,7 @@ const menuItems: MenuItem[] = [
         id: 1,
         name: "Pollo a la Brasa Clásico",
         desc: "1/4 de pollo con papas fritas doradas y ensalada fresca.",
-        price: "S/ 24.90",
+        price: "€ 24.90",
         image: "/img/image-1.jpg",
         tag: "Más Pedido"
     },
@@ -25,7 +25,7 @@ const menuItems: MenuItem[] = [
         id: 2,
         name: "Parrillada Mixta",
         desc: "Chuleta, anticucho, chorizo y panceta con papas.",
-        price: "S/ 45.00",
+        price: "€ 45.00",
         image: "/img/image-11.jpeg",
         tag: "Recomendado"
     },
@@ -33,7 +33,7 @@ const menuItems: MenuItem[] = [
         id: 3,
         name: "Alitas BBQ",
         desc: "12 alitas bañadas en nuestra salsa secreta BBQ.",
-        price: "S/ 28.50",
+        price: "€ 28.50",
         image: "/img/image-16.jpg",
         tag: null
     },
@@ -41,7 +41,7 @@ const menuItems: MenuItem[] = [
         id: 4,
         name: "Lomo Saltado",
         desc: "Tradicional lomo fino salteado al wok con papas.",
-        price: "S/ 38.00",
+        price: "€ 38.00",
         image: "/img/image-12.jpeg",
         tag: null
     },
@@ -49,15 +49,15 @@ const menuItems: MenuItem[] = [
         id: 5,
         name: "Anticuchos de Corazón",
         desc: "3 palos de puro corazón con papas doradas y choclo.",
-        price: "S/ 22.00",
-        image: "/img/image-28.jpeg", // Placeholder
+        price: "€ 22.00",
+        image: "/img/image-20.jpg", // Placeholder
         tag: "Clásico"
     },
     {
         id: 6,
         name: "Chaufa de Pollo",
         desc: "Arroz chaufa al estilo oriental con trozos de pollo.",
-        price: "S/ 20.00",
+        price: "€ 20.00",
         image: "/img/image-6.jpg",
         tag: null
     }
@@ -71,7 +71,7 @@ const Menu: React.FC<MenuProps> = ({ onAddToCart }) => {
     const { addToCart } = useCart();
 
     const handleAddItem = (item: MenuItem) => {
-        const numericPrice = parseFloat(item.price.replace('S/ ', ''));
+        const numericPrice = parseFloat(item.price.replace('€ ', ''));
         addToCart({
             id: item.id,
             name: item.name,

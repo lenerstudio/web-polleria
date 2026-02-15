@@ -91,7 +91,7 @@ const CartPage: React.FC = () => {
                                         <div className="flex-grow text-center sm:text-left w-full">
                                             <h3 className="font-bold text-lg text-gray-900">{item.name}</h3>
                                             <p className="text-sm text-gray-500 mb-2">{item.description}</p>
-                                            <span className="font-bold text-orange-600 text-lg sm:hidden">S/ {item.price.toFixed(2)}</span>
+                                            <span className="font-bold text-orange-600 text-lg sm:hidden">€ {item.price.toFixed(2)}</span>
                                         </div>
 
                                         {/* Controls */}
@@ -116,8 +116,8 @@ const CartPage: React.FC = () => {
 
                                             {/* Price Desktop */}
                                             <div className="hidden sm:block text-right min-w-[80px]">
-                                                <span className="block font-bold text-gray-900 text-lg">S/ {(item.price * item.quantity).toFixed(2)}</span>
-                                                <span className="text-xs text-gray-400">S/ {item.price.toFixed(2)} c/u</span>
+                                                <span className="block font-bold text-gray-900 text-lg">€ {(item.price * item.quantity).toFixed(2)}</span>
+                                                <span className="text-xs text-gray-400">€ {item.price.toFixed(2)} c/u</span>
                                             </div>
 
                                             {/* Delete */}
@@ -145,16 +145,16 @@ const CartPage: React.FC = () => {
                                 <div className="space-y-3 mb-6">
                                     <div className="flex justify-between text-gray-600">
                                         <span>Subtotal</span>
-                                        <span className="font-medium">S/ {cartTotal.toFixed(2)}</span>
+                                        <span className="font-medium">€ {cartTotal.toFixed(2)}</span>
                                     </div>
                                     <div className="flex justify-between text-gray-600">
                                         <span>Envío estimado</span>
-                                        <span className="font-medium">S/ {shippingEstimate.toFixed(2)}</span>
+                                        <span className="font-medium">€ {shippingEstimate.toFixed(2)}</span>
                                     </div>
                                     <div className="pt-3 border-t border-gray-100 flex justify-between items-end">
                                         <span className="text-lg font-bold text-gray-900">Total</span>
                                         <div className="text-right">
-                                            <span className="block text-3xl font-extrabold text-orange-600 leading-none">S/ {total.toFixed(2)}</span>
+                                            <span className="block text-3xl font-extrabold text-orange-600 leading-none">€ {total.toFixed(2)}</span>
                                             <span className="text-xs text-gray-400">Incluye IGV</span>
                                         </div>
                                     </div>

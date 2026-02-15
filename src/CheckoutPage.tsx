@@ -4,7 +4,7 @@ import {
     MapPin, Phone, StickyNote, CreditCard, Banknote, Smartphone,
     ArrowLeft, Check, ShoppingBag, Loader2
 } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useCart } from './context/CartContext';
 
 const shippingCost = 5.00;
@@ -13,7 +13,6 @@ type PaymentMethod = 'cash' | 'card_terminal' | 'online' | 'bizum' | 'yape';
 
 const CheckoutPage: React.FC = () => {
     const { items: cartItems, clearCart, cartTotal } = useCart();
-    const navigate = useNavigate();
 
     const [loading, setLoading] = useState(false);
     const [completed, setCompleted] = useState(false);
@@ -22,7 +21,7 @@ const CheckoutPage: React.FC = () => {
     // Form State
     const [formData, setFormData] = useState({
         address: '',
-        city: 'Lima',
+        city: 'Sevilla',
         phone: '',
         notes: '',
         cardNumber: '',
@@ -121,7 +120,7 @@ const CheckoutPage: React.FC = () => {
                                         type="text"
                                         name="address"
                                         required
-                                        placeholder="Av. Principal 123, Dpto 401"
+                                        placeholder="Calle Sierpes 12, 3º A"
                                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all"
                                         onChange={handleInputChange}
                                     />
@@ -144,7 +143,7 @@ const CheckoutPage: React.FC = () => {
                                             type="tel"
                                             name="phone"
                                             required
-                                            placeholder="987 654 321"
+                                            placeholder="612 345 678"
                                             className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all"
                                             onChange={handleInputChange}
                                         />
@@ -266,7 +265,7 @@ const CheckoutPage: React.FC = () => {
                                         <div className="flex-grow">
                                             <div className="flex justify-between items-start">
                                                 <h4 className="font-bold text-gray-900 text-sm line-clamp-2">{item.name}</h4>
-                                                <span className="font-bold text-gray-900">S/ {(item.price * item.quantity).toFixed(2)}</span>
+                                                <span className="font-bold text-gray-900">€ {(item.price * item.quantity).toFixed(2)}</span>
                                             </div>
                                             <p className="text-sm text-gray-500 mt-1">Cant: {item.quantity}</p>
                                         </div>
@@ -277,15 +276,15 @@ const CheckoutPage: React.FC = () => {
                             <div className="border-t border-gray-100 pt-4 space-y-2 mb-6">
                                 <div className="flex justify-between text-gray-600">
                                     <span>Subtotal</span>
-                                    <span>S/ {cartTotal.toFixed(2)}</span>
+                                    <span>€ {cartTotal.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between text-gray-600">
                                     <span>Envío</span>
-                                    <span>S/ {shippingCost.toFixed(2)}</span>
+                                    <span>€ {shippingCost.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between text-gray-900 font-extrabold text-2xl pt-2 mt-2 border-t border-gray-100">
                                     <span>Total</span>
-                                    <span>S/ {total.toFixed(2)}</span>
+                                    <span>€ {total.toFixed(2)}</span>
                                 </div>
                             </div>
 
@@ -315,12 +314,12 @@ const CheckoutPage: React.FC = () => {
 };
 
 // Helper Component for Payment Options
-const PaymentOption = ({ id, title, desc, icon: Icon, selected, onSelect }: any) => (
+const PaymentOption = ({ title, desc, icon: Icon, selected, onSelect }: any) => (
     <div
         onClick={onSelect}
         className={`cursor-pointer p-4 rounded-xl border-2 transition-all flex items-start gap-4 ${selected
-                ? 'border-red-600 bg-red-50'
-                : 'border-gray-100 bg-gray-50 hover:border-red-200'
+            ? 'border-red-600 bg-red-50'
+            : 'border-gray-100 bg-gray-50 hover:border-red-200'
             }`}
     >
         <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 flex-shrink-0 ${selected ? 'border-red-600' : 'border-gray-300'
