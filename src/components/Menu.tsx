@@ -1,5 +1,6 @@
 import React from 'react';
-import { Plus } from 'lucide-react';
+import { Plus, ShoppingCart } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 
@@ -69,6 +70,7 @@ interface MenuProps {
 
 const Menu: React.FC<MenuProps> = ({ onAddToCart }) => {
     const { addToCart } = useCart();
+    const navigate = useNavigate();
 
     const handleAddItem = (item: MenuItem) => {
         const numericPrice = parseFloat(item.price.replace('€ ', ''));
@@ -143,12 +145,21 @@ const Menu: React.FC<MenuProps> = ({ onAddToCart }) => {
                                 </div>
                                 <p className="text-gray-500 text-sm mb-6 line-clamp-2 flex-grow">{item.desc}</p>
 
-                                <button
-                                    onClick={() => handleAddItem(item)}
-                                    className="w-full py-3 bg-gray-900 hover:bg-orange-600 text-white rounded-xl font-bold transition-colors flex items-center justify-center gap-2 mt-auto"
-                                >
-                                    <Plus className="w-5 h-5" /> Agregar al Pedido
-                                </button>
+                                <div className="flex gap-2 mt-auto">
+                                    <button
+                                        onClick={() => handleAddItem(item)}
+                                        className="flex-1 py-3 bg-gray-900 hover:bg-orange-600 active:bg-orange-700 text-white rounded-xl font-bold transition-colors flex items-center justify-center gap-2"
+                                    >
+                                        <Plus className="w-5 h-5" /> Agregar al Pedido
+                                    </button>
+                                    <button
+                                        onClick={() => navigate('/carrito')}
+                                        className="px-4 py-3 bg-gray-100 hover:bg-gray-200 active:bg-orange-600 active:text-white text-gray-900 rounded-xl font-bold transition-colors flex items-center justify-center border border-gray-200"
+                                        aria-label="Ir al carrito"
+                                    >
+                                        <ShoppingCart className="w-5 h-5" />
+                                    </button>
+                                </div>
                             </div>
                         </motion.div>
                     ))}
