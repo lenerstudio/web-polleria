@@ -154,7 +154,7 @@ const Menu: React.FC<MenuProps> = ({ onAddToCart }) => {
                                     </button>
                                     <button
                                         onClick={() => navigate('/carrito')}
-                                        className="px-4 py-3 bg-gray-100 hover:bg-gray-200 active:bg-orange-600 active:text-white text-gray-900 rounded-xl font-bold transition-colors flex items-center justify-center border border-gray-200"
+                                        className="px-4 py-3 bg-gray-400 hover:bg-orange-600 active:bg-orange-600 active:text-white text-gray-900 rounded-xl font-bold transition-colors flex items-center justify-center border border-gray-200"
                                         aria-label="Ir al carrito"
                                     >
                                         <ShoppingCart className="w-5 h-5" />
