@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     MapPin, Phone, StickyNote, CreditCard, Banknote, Smartphone,
-    ArrowLeft, Check, ShoppingBag, Loader2, User
+    ArrowLeft, Check, ShoppingBag, Loader2, User, Mail
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from './context/CartContext';
@@ -22,6 +22,7 @@ const CheckoutPage: React.FC = () => {
     const [formData, setFormData] = useState({
         name: '',
         surname: '',
+        email: '',
         address: '',
         city: 'Sevilla',
         phone: '',
@@ -53,6 +54,7 @@ ${itemsList}
 👤 *Datos del Cliente:*
 Nombre: ${formData.name}
 Apellidos: ${formData.surname}
+Email: ${formData.email}
 
 📍 *Datos de Entrega:*
 Dirección: ${formData.address}
@@ -196,6 +198,20 @@ Nota: ${formData.notes || '-'}
                                             name="phone"
                                             required
                                             placeholder="612 345 678"
+                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all"
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                    <div className="relative">
+                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            required
+                                            placeholder="juan@email.com"
                                             className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all"
                                             onChange={handleInputChange}
                                         />

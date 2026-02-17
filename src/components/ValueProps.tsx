@@ -48,7 +48,7 @@ const ValueProps: React.FC = () => {
     };
 
     return (
-        <section className="py-16 bg-white">
+        <section id="nosotros" className="py-16 bg-white">
             <div className="container mx-auto px-4">
                 <motion.div
                     variants={containerVariants}

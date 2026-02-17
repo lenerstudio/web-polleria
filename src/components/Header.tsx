@@ -41,14 +41,19 @@ const Header: React.FC<HeaderProps> = ({ onOrderClick, onReserveClick, cartCount
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
-                    {['Inicio', 'Nosotros', 'Menú', 'Promociones'].map((item) => (
+                    {[
+                        { name: 'Inicio', id: 'inicio' },
+                        { name: 'Nosotros', id: 'nosotros' },
+                        { name: 'Menú', id: 'menu' },
+                        { name: 'Promociones', id: 'promociones' }
+                    ].map((item) => (
                         <a
-                            key={item}
-                            href={`#${item.toLowerCase()}`}
+                            key={item.name}
+                            href={`#${item.id}`}
                             className={`font-medium hover:text-orange-500 transition-colors ${scrolled ? 'text-gray-600' : 'text-gray-200 hover:text-white drop-shadow-sm'
                                 }`}
                         >
-                            {item}
+                            {item.name}
                         </a>
                     ))}
                 </nav>
@@ -92,14 +97,19 @@ const Header: React.FC<HeaderProps> = ({ onOrderClick, onReserveClick, cartCount
                         className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
                     >
                         <div className="p-4 flex flex-col gap-4">
-                            {['Inicio', 'Nosotros', 'Menú', 'Promociones'].map((item) => (
+                            {[
+                                { name: 'Inicio', id: 'inicio' },
+                                { name: 'Nosotros', id: 'nosotros' },
+                                { name: 'Menú', id: 'menu' },
+                                { name: 'Promociones', id: 'promociones' }
+                            ].map((item) => (
                                 <a
-                                    key={item}
-                                    href={`#${item.toLowerCase()}`}
+                                    key={item.name}
+                                    href={`#${item.id}`}
                                     className="text-gray-800 font-medium py-2 border-b border-gray-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    {item}
+                                    {item.name}
                                 </a>
                             ))}
                             <button

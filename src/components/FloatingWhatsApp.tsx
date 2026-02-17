@@ -7,7 +7,7 @@ const FloatingWhatsApp: React.FC = () => {
             href="https://wa.me/51987654321"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-50 group"
+            className="fixed bottom-20 right-6 z-50 group"
         >
             <motion.div
                 className="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#128C7E] transition-colors relative flex items-center justify-center w-16 h-16"

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const PromoSection: React.FC = () => {
     return (
-        <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white relative overflow-hidden">
+        <section id="promociones" className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white relative overflow-hidden">
             {/* Background decorative pattern */}
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "20px 20px" }}></div>
 

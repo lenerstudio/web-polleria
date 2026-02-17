@@ -12,7 +12,7 @@ const Hero: React.FC<HeroProps> = ({ onOrderClick, onReserveClick }) => {
     const y = useTransform(scrollY, [0, 500], [0, 200]);
 
     return (
-        <section className="relative h-[100vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden">
+        <section id="inicio" className="relative h-[100vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden">
             {/* Background with overlay */}
             <motion.div
                 className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
