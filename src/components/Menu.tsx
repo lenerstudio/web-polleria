@@ -145,20 +145,34 @@ const Menu: React.FC<MenuProps> = ({ onAddToCart }) => {
                                 </div>
                                 <p className="text-gray-500 text-sm mb-6 line-clamp-2 flex-grow">{item.desc}</p>
 
-                                <div className="flex gap-2 mt-auto">
+                                <div className="flex flex-col gap-2 mt-auto">
+
+                                    <div className="flex gap-2">
+                                        <button
+                                            onClick={() => handleAddItem(item)}
+                                            className="flex-1 py-3 bg-gray-900 hover:bg-orange-600 active:bg-orange-700 text-white rounded-xl font-bold transition-colors flex items-center justify-center gap-2"
+                                        >
+                                            <Plus className="w-5 h-5" /> Agregar
+                                        </button>
+                                        <button
+                                            onClick={() => navigate('/carrito')}
+                                            className="px-4 py-3 bg-gray-100 hover:bg-orange-100 text-gray-900 hover:text-orange-600 rounded-xl font-bold transition-colors flex items-center justify-center border border-gray-200"
+                                            aria-label="Ir al carrito"
+                                        >
+                                            <ShoppingCart className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                    {/* WhatsApp Button 
                                     <button
-                                        onClick={() => handleAddItem(item)}
-                                        className="flex-1 py-3 bg-gray-900 hover:bg-orange-600 active:bg-orange-700 text-white rounded-xl font-bold transition-colors flex items-center justify-center gap-2"
+                                        onClick={() => {
+                                            const message = `Hola, me gustaría pedir: ${item.name} - Precio: ${item.price}`;
+                                            window.open(`https://wa.me/34624432245?text=${encodeURIComponent(message)}`, '_blank');
+                                        }}
+                                        className="w-full py-2 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold transition-colors flex items-center justify-center gap-2"
                                     >
-                                        <Plus className="w-5 h-5" /> Agregar al Pedido
+                                        <MessageCircle className="w-5 h-5" /> Pedir por WhatsApp
                                     </button>
-                                    <button
-                                        onClick={() => navigate('/carrito')}
-                                        className="px-4 py-3 bg-gray-400 hover:bg-orange-600 active:bg-orange-600 active:text-white text-gray-900 rounded-xl font-bold transition-colors flex items-center justify-center border border-gray-200"
-                                        aria-label="Ir al carrito"
-                                    >
-                                        <ShoppingCart className="w-5 h-5" />
-                                    </button>
+                                    */}
                                 </div>
                             </div>
                         </motion.div>

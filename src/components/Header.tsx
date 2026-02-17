@@ -30,9 +30,9 @@ const Header: React.FC<HeaderProps> = ({ onOrderClick, onReserveClick, cartCount
                 {/* Logo */}
                 <a href="#" className="flex items-center gap-3 group">
                     <img
-                        src="/logo.png"
+                        src="/img/logo-pollo.png"
                         alt="Pollería Hermanos Logo"
-                        className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
+                        className="h-20 w-auto object-contain transition-transform group-hover:scale-135"
                     />
                     <span className={`text-2xl font-bold tracking-tighter hidden sm:block ${scrolled ? 'text-gray-900' : 'text-white drop-shadow-md'}`}>
                         POLLERÍA<span className="text-orange-600">HERMANOS</span>

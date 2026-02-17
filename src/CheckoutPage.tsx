@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     MapPin, Phone, StickyNote, CreditCard, Banknote, Smartphone,
-    ArrowLeft, Check, ShoppingBag, Loader2
+    ArrowLeft, Check, ShoppingBag, Loader2, User
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from './context/CartContext';
@@ -20,6 +20,8 @@ const CheckoutPage: React.FC = () => {
 
     // Form State
     const [formData, setFormData] = useState({
+        name: '',
+        surname: '',
         address: '',
         city: 'Sevilla',
         phone: '',
@@ -35,14 +37,39 @@ const CheckoutPage: React.FC = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        setLoading(false);
-        setCompleted(true);
-        clearCart(); // Clear cart after successful order
+
+        const itemsList = cartItems.map(item => `• ${item.name} (x${item.quantity}) - €${(item.price * item.quantity).toFixed(2)}`).join('\n');
+        const total = cartTotal + shippingCost;
+
+        const message = `*Nuevo Pedido Web* 🍗
+--------------------------
+${itemsList}
+--------------------------
+*Total: €${total.toFixed(2)}*
+
+👤 *Datos del Cliente:*
+Nombre: ${formData.name}
+Apellidos: ${formData.surname}
+
+📍 *Datos de Entrega:*
+Dirección: ${formData.address}
+Ciudad: ${formData.city}
+Teléfono: ${formData.phone}
+Nota: ${formData.notes || '-'}
+
+💳 Método de Pago: ${paymentMethod.toUpperCase()}`;
+
+        const whatsappUrl = `https://wa.me/34624432245?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+
+        setTimeout(() => {
+            setLoading(false);
+            setCompleted(true);
+            clearCart();
+        }, 1000);
     };
 
     if (completed) {
@@ -111,9 +138,34 @@ const CheckoutPage: React.FC = () => {
                         {/* Delivery Section */}
                         <section className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
                             <h2 className="text-xl font-bold flex items-center gap-2 mb-6 text-gray-800">
-                                <MapPin className="w-5 h-5 text-red-600" /> Dirección de Entrega
+                                <MapPin className="w-5 h-5 text-red-600" /> Datos de Entrega
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+                                    <div className="relative">
+                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            required
+                                            placeholder="Juan"
+                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all"
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Apellidos</label>
+                                    <input
+                                        type="text"
+                                        name="surname"
+                                        required
+                                        placeholder="Pérez"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all"
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
                                 <div className="md:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Dirección Exacta</label>
                                     <input

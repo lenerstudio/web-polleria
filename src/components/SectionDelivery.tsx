@@ -50,7 +50,7 @@ const SectionDelivery: React.FC<SectionDeliveryProps> = ({ onOrderClick }) => {
                 >
                     <div className="relative rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
                         <img
-                            src="/img/image-29.jpeg"
+                            src="/img/pollo-a-la-brasa.webp"
                             alt="Delivery Experience"
                             className="w-full h-auto object-cover"
                         />

@@ -162,10 +162,28 @@ const CartPage: React.FC = () => {
 
                                 <button
                                     onClick={() => navigate('/pedido')}
-                                    className="w-full py-4 bg-gray-900 hover:bg-orange-600 text-white rounded-xl font-bold text-lg shadow-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-2"
+                                    className="w-full py-4 bg-gray-900 hover:bg-orange-600 text-white rounded-xl font-bold text-lg shadow-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-2 mb-3"
                                 >
                                     Finalizar Pedido <ArrowRight className="w-5 h-5" />
                                 </button>
+                                {/* WhatsApp Button 
+                                <button
+                                    onClick={() => {
+                                        const itemsList = cartItems.map(item => `• ${item.name} (x${item.quantity}) - €${(item.price * item.quantity).toFixed(2)}`).join('\n');
+                                        const message = `*Nuevo Pedido Web* 🍗
+--------------------------
+${itemsList}
+--------------------------
+*Total: €${total.toFixed(2)}*
+
+Hola, quisiera confirmar este pedido.`;
+                                        window.open(`https://wa.me/34624432245?text=${encodeURIComponent(message)}`, '_blank');
+                                    }}
+                                    className="w-full py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold text-lg shadow-lg shadow-green-500/20 transition-all hover:-translate-y-1 flex items-center justify-center gap-2"
+                                >
+                                    <MessageCircle className="w-5 h-5" /> Pedir por WhatsApp
+                                </button>
+                                */}
 
                                 <div className="mt-6 text-center">
                                     <Link to="/" className="text-sm text-gray-500 hover:text-gray-900 font-medium underline decoration-gray-300 hover:decoration-gray-900">

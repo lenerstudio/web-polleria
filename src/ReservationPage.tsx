@@ -53,8 +53,20 @@ const ReservationPage: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
+        const message = `*Nueva Reserva*
+📅 Fecha: ${formData.date.toLocaleDateString()}
+⏰ Hora: ${formData.time}
+👥 Personas: ${formData.guests}
+👤 Nombre: ${formData.name}
+📧 Email: ${formData.email}
+📞 Teléfono: ${formData.phone}
+📝 Notas: ${formData.notes || 'Ninguna'}`;
+
+        const whatsappUrl = `https://wa.me/34624432245?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+
         setStep(3);
-        // Here you would typically send data to backend
     };
 
     const containerVariants = {
@@ -135,8 +147,8 @@ const ReservationPage: React.FC = () => {
                                                     key={num}
                                                     onClick={() => setFormData({ ...formData, guests: num })}
                                                     className={`w-12 h-12 rounded-full font-bold flex-shrink-0 transition-all ${formData.guests === num
-                                                            ? 'bg-orange-600 text-white shadow-lg shadow-orange-600/30 scale-105'
-                                                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                                        ? 'bg-orange-600 text-white shadow-lg shadow-orange-600/30 scale-105'
+                                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                                         }`}
                                                 >
                                                     {num}
@@ -185,8 +197,8 @@ const ReservationPage: React.FC = () => {
                                                     key={time}
                                                     onClick={() => setFormData({ ...formData, time })}
                                                     className={`py-2 px-3 rounded-lg font-medium text-sm transition-all border ${formData.time === time
-                                                            ? 'bg-gray-900 text-white border-gray-900 shadow-md'
-                                                            : 'bg-white text-gray-700 border-gray-200 hover:border-orange-500 hover:text-orange-600'
+                                                        ? 'bg-gray-900 text-white border-gray-900 shadow-md'
+                                                        : 'bg-white text-gray-700 border-gray-200 hover:border-orange-500 hover:text-orange-600'
                                                         }`}
                                                 >
                                                     {time}
@@ -200,8 +212,8 @@ const ReservationPage: React.FC = () => {
                                             onClick={() => isStep1Valid && setStep(2)}
                                             disabled={!isStep1Valid}
                                             className={`px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all ${isStep1Valid
-                                                    ? 'bg-orange-600 text-white hover:bg-orange-700 shadow-lg hover:shadow-xl hover:-translate-y-1'
-                                                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                                ? 'bg-orange-600 text-white hover:bg-orange-700 shadow-lg hover:shadow-xl hover:-translate-y-1'
+                                                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                                 }`}
                                         >
                                             Continuar <ArrowRight className="w-5 h-5" />
@@ -281,8 +293,8 @@ const ReservationPage: React.FC = () => {
                                             onClick={handleSubmit}
                                             disabled={!isStep2Valid}
                                             className={`px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all ${isStep2Valid
-                                                    ? 'bg-gray-900 text-white hover:bg-gray-800 shadow-lg shadow-gray-900/20'
-                                                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                                ? 'bg-gray-900 text-white hover:bg-gray-800 shadow-lg shadow-gray-900/20'
+                                                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                                 }`}
                                         >
                                             Confirmar Reserva
